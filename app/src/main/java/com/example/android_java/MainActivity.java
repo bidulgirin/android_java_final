@@ -86,13 +86,14 @@ public class MainActivity extends Activity {
         try {
             // Initiate DevicePolicyManager.
             DevicePolicyManager mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-            ComponentName mAdminName = new ComponentName(this, DeviceAdminReceiver.class);
+            ComponentName mAdminName = new ComponentName(this, DeviceAdminDemo.class);
 
             if (!mDPM.isAdminActive(mAdminName)) {
                 Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
                 intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mAdminName);
                 intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Click on Activate button to secure your application.");
-                startActivityForResult(intent, REQUEST_CODE);
+                //startActivityForResult(intent, REQUEST_CODE);
+                startActivity(intent);
             } else {
                 // callRecord 클래스의 인스턴스를 저장
                 CallRecord callRecord;
